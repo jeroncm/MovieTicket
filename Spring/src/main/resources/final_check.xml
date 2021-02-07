@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        
+        <bean id="movie1" class="com.demo.final_check.model.MovieList" scope = "prototype">
+        <property name="id" value="1" />
+        <property name="title" value="Avatar" />
+         <property name="boxoffice" value="2787965087" />
+          <property name="active" value="true" />
+           <property name="dateoflaunch" value="12/12/2018" />
+            <property name="genre" value="Science-fiction" />
+             <property name="hasteaser" value="true" />
+             <property name = "url" value = "https://pmcvariety.files.wordpress.com/2013/07/avatar.jpg"/>
+    </bean>
+  
+  <bean id="movie2" class="com.demo.final_check.model.MovieList" scope = "prototype">
+        <property name="id" value="2" />
+        <property name="title" value="Avengers EndGame" />
+         <property name="boxoffice" value="2787965087" />
+          <property name="active" value="true" />
+           <property name="dateoflaunch" value="12/11/2015" />
+            <property name="genre" value="Superhero" />
+             <property name="hasteaser" value="false" />
+             <property name = "url" value = "https://www.avsforum.com/wordpress/wp-content/uploads/2019/07/Avengers-Endgame-Header-Pic-1000x562.png"/>
+    </bean>
+    
+    <bean id="movie3" class="com.demo.final_check.model.MovieList" scope = "prototype">
+        <property name="id" value="3" />
+        <property name="title" value="Titanic" />
+         <property name="boxoffice" value="2765460348" />
+          <property name="active" value="true" />
+           <property name="dateoflaunch" value="08/05/2020" />
+            <property name="genre" value="Romance" />
+             <property name="hasteaser" value="true" />
+             <property name = "url" value = "https://titanicsound.files.wordpress.com/2014/11/titanic_movie-hd-1.jpg"/>
+    </bean>
+    
+    <bean id="movie4" class="com.demo.final_check.model.MovieList" scope = "prototype">
+        <property name="id" value="4" />
+        <property name="title" value="Jurassic world" />
+         <property name="boxoffice" value="1671713208" />
+          <property name="active" value="false" />
+           <property name="dateoflaunch" value="12/12/2018" />
+            <property name="genre" value="Science-fiction" />
+             <property name="hasteaser" value="true" />
+             <property name = "url" value = "https://cdn1.thr.com/sites/default/files/2017/12/jurassic_world_fallen_kingdom_0.jpg"/>
+    </bean>
+    
+    <bean id="movie5" class="com.demo.final_check.model.MovieList" scope = "prototype">
+        <property name="id" value="5" />
+        <property name="title" value="Avengers" />
+         <property name="boxoffice" value="2750760348" />
+          <property name="active" value="true" />
+           <property name="dateoflaunch" value="12/02/2016" />
+            <property name="genre" value="Superhero" />
+             <property name="hasteaser" value="true" />
+             <property name = "url" value = "https://cdn.mos.cms.futurecdn.net/pGGqwmB4zPkiLZd66zUH76.jpg"/>
+    </bean>
+          
+         <bean id="movieList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="movie1"></ref>
+                <ref bean="movie2"></ref>
+                <ref bean="movie3"></ref>
+                <ref bean="movie4"></ref>
+                <ref bean="movie5"></ref>
+                
+            </list>
+        </constructor-arg>
+    </bean>
+         
+        </beans>

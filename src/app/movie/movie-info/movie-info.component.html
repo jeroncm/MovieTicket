@@ -1,0 +1,98 @@
+
+		<div class="container-fluid">
+      <div class="card-deck">
+        <div class="col-12 col-lg-3 col-md-6" *ngFor = "let movie of movielist">
+          <div class="card">
+            <img
+              src="{{movie.url}}"
+              class="card-img-top">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-6">
+                  <h5>{{movie.title}}</h5>
+  
+                </div>
+                <div class="col-6 text-right">
+  
+                  
+                    <span class="fa fa-dollar"> {{movie.boxoffice}}</span>
+                  
+                </div>
+              </div>
+              <div class="row">
+                
+                <div class="col-9 text-left" *ngIf ="movie.hasteaser==true">
+                  <i class='fas fa-file-video'></i> <span
+                    class="badge badge-primary float-left">Has Teaser</span>
+                </div>
+                <div class="col-9 text-left" *ngIf ="movie.hasteaser==false">
+                  <i class='fas fa-file-video'></i> <span
+                    class="badge badge-primary float-left">No Teaser</span>
+                </div>
+              
+
+                <div *ngIf = "isAdmin">
+                    <div class="col-3 text-right" *ngIf = "movie.active == true">
+                      <small> <span class="badge badge-success ">Active</span>
+                        
+                      </small>
+                    </div>
+                    <div class="col-3 " *ngIf = "movie.active == false">
+                      <small> <span class="badge badge-danger ">Inactive</span>
+                        
+                      </small>
+                    </div>
+                    </div>
+
+                
+              
+              </div>
+              <div class = "row">
+                <div class="col-6 mt-3">
+                    {{movie.genre}}
+                </div>
+
+              </div>
+  
+              <div class="row">
+                <div class="col-6 mt-3">
+                   <i class="fa fa-clock-o mb-2"></i><small>  Date of Release</small><br>
+                  
+                    <small>{{movie.dateoflaunch | date}}</small>
+                  
+  
+                </div>
+
+                <div class="row col-12" *ngIf="!isAdmin">
+                  <a  id="t" class="btn btn-danger ml-auto " (click)="addToFavourites(movie,movie.id)">
+                      <i class="fa fa-heart-o"></i> Add to Favourites
+                  </a>
+                </div>
+
+
+
+                <div class="col-6 text-right mt-3" *ngIf="isAdmin">
+                  <a [routerLink] = "['/movie-edit',movie.id]"><button type="button"
+                      class="btn btn-danger " id="add">
+                      <i class="fa fa-pencil"></i> Edit
+                    </button></a>
+                </div>
+              </div>
+  
+            </div>
+  
+  
+          </div>
+          
+        </div>
+        </div>
+
+       
+        </div>
+
+        <div class="container" *ngIf="added">
+            <div class="alert text-center alert-success">Added to<a routerLink = '/favourite-list'> Favourites</a>
+              successfully</div>
+          </div>
+
+        

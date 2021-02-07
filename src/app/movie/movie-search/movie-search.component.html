@@ -1,0 +1,57 @@
+
+<nav class="navbar bg-dark text-light navbar-expand-lg">
+	<a class="navbar-brand" routerLink="/movie-search"> <i class="fa fa-film"></i><span id="truyum-heading">
+			Movie Cruiser</span></a>
+			<button type="button" class="navbar-toggler" data-toggle="collapse"
+			data-target="#x">
+			<span class="navbar-toggler-icon" ></span>
+		  </button>
+		<div id="x" class="collapse navbar-collapse">
+			<ul class="navbar-nav ml-auto" *ngIf="islogged"> 
+			  <li class="nav-item"><a class="nav-link "
+			  id="truyum-navbar-menus" routerLink="/movie-search">Movie List</a></li>
+			  <li class="nav-item" *ngIf="!iscustomer"><a class="nav-link "
+				id="truyum-navbar-menus" routerLink="/favourite-list">Favourites</a></li>
+				<li class="nav-item mt-2" id="truyum-navbar-menus"><i class="fa fa-user ml-4"></i>{{name}}</li>
+			  <li class="nav-item"><a class="nav-link "
+			  id="truyum-navbar-menus" (click)="logout()">Logout</a></li>
+			</ul>
+			<ul class="navbar-nav ml-auto" *ngIf="!islogged"> 
+				<li class="nav-item"><a class="nav-link "
+				  id="truyum-navbar-menus" routerLink="/movie-search">Movie List</a></li>
+				  <!-- <li class="nav-item" *ngIf="!iscustomer"><a class="nav-link "
+					id="truyum-navbar-menus" routerLink="/favourite-list">Favourites</a></li>     -->
+				<li class="nav-item"><a class="nav-link "
+				  id="truyum-navbar-menus"  routerLink="/login">Login</a></li>
+				  <li class="nav-item"><a class="nav-link "
+				  id="truyum-navbar-menus"  routerLink="/signup">Signup</a></li><br><br>
+				</ul>
+			</div>
+	</nav>
+
+
+
+
+	<div class="jumbotron">
+		<h3 class="text-white">Find Movies</h3>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fa fa-file-movie-o"></i></span>
+			</div>
+
+			<!--cust-->
+			<div *ngIf = "!admin">
+					<input type="text" class="form-control w-100"
+						placeholder="Search movies......" [(ngModel)]="searchtext" (input)="search()" >
+					</div>
+
+
+					<div *ngIf = "admin">
+							<input type="text" class="form-control w-100"
+								placeholder="Search movies......" [(ngModel)]="searchtext" (input)="search()" >
+							</div>
+		</div>
+
+  </div>
+  
+  <app-movie-info [movielist] = "movielist"></app-movie-info>

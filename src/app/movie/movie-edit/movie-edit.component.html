@@ -1,0 +1,116 @@
+
+<nav class="navbar bg-dark text-light navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/movie-search"> <i class="fa fa-film"></i><span id="truyum-heading">
+          Movie Cruiser</span></a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse"
+          data-target="#x">
+          <span class="navbar-toggler-icon" ></span>
+        </button>
+      <div id="x" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link text-light"
+            id="truyum-navbar-menus" routerLink="/movie-search">Movies List</a></li>
+              <li class="nav-item mt-2" id="truyum-navbar-menus"><i class="fa fa-user ml-4"></i>admin</li>
+            <li class="nav-item"><a class="nav-link "
+            id="truyum-navbar-menus" routerLink="/login" (click)="logout()">Logout</a></li>
+          </ul>
+          </div>
+  </nav>
+
+
+
+<form [formGroup]="editForm" (ngSubmit)="onsubmit()">
+    <div class="container-fluid mb-5">
+      <h3>Edit menu item</h3>
+      <div class="row">
+        <div class="col-12">
+          <label for="title">Movie Name</label> <div class = "form-group"><input id="title" type="text" [formControl]="title" style="width: 100%; " class = "form-control"
+           /></div>
+           <div *ngIf="title.invalid && (title.touched || title.dirty)">
+              <small *ngIf="title.errors.required" >title field is required</small>
+              <small *ngIf="title.errors.minlength" >title should be more than 2 characters</small>
+            </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <label for="boxoffice">BoxOffice</label><div class = "form-group"> <input class = "form-control" id="boxoffice" type="text" [formControl]="boxoffice" style="width: 100%; "
+          /></div>
+          <div *ngIf="boxoffice.invalid && (boxoffice.touched || boxoffice.dirty)">
+              <small *ngIf="boxoffice.errors.required" >Price field is required</small>
+              <small *ngIf="boxoffice.errors.pattern" >Price should be a number</small>
+            </div>
+        </div>
+      
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <label for="category">Genre</label><div class = "form-group"> 
+            <select [formControl]="genre" class = "form-control" style="width: 100%; "
+            id="category">
+            <option>Romance</option>
+            <option>Science Fiction</option>
+            <option>Superhero</option>
+    
+          </select>
+          <div *ngIf="genre.invalid && (genre.touched || genre.dirty)">
+              <small *ngIf="genre.errors.required" >Choose a genre</small>
+            </div></div>
+        </div>
+    
+    
+        <div class="row">
+            <div class="col-12">
+              <label for="title">Date Of Release</label> <div class = "form-group"><input id="title" type="text" [formControl]="dateoflaunch" style="width: 100%; " class = "form-control"
+               /></div>
+               
+            </div>
+          </div>
+    
+    
+    
+    
+    
+    
+          
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <div>
+            <label class = "ml-5">Active</label>
+          </div>
+          <div >
+            <label class="form-check-label" for="radio1"> <input [formControl]="active" class = "ml-4"
+              type="radio"  id="radio1" name="optradio" [value]=true>Yes
+            </label>&nbsp;
+          
+          
+            <label class="form-check-label" for="radio2"> <input [formControl]="active" class = "ml-4"
+              type="radio"  id="radio2" name="optradio" [value]=false>No
+            </label>
+          </div>
+          
+              
+            
+        </div>
+        
+    
+      </div>
+      <div class="row">
+        <div class="pl-3">
+          <input [formControl]="hasteaser" type="checkbox" class="ml-auto" 
+            id="freeDelivery" > <label class="pl-3"
+            for="freeDelivery">Has Teaser</label>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-success ml-3 mt-2" >Save</button>
+      </div>
+      <div class=" pt-3" *ngIf="editted">
+        <div class="alert alert-success text-center">Movie details saved
+          successfully .Click <a routerLink = '/movie-search'>Movie List</a> to see the changes</div>
+      </div>
+      
+      
+    
+    </div>
+    </form>
+
+    

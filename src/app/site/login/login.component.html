@@ -1,0 +1,58 @@
+
+ <nav class="navbar bg-dark text-light navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/movie-search"><i class="fa fa-film"></i><span id="truyum-heading">
+                  Movie Cruiser</span></a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse"
+                  data-target="#x">
+                  <span class="navbar-toggler-icon" ></span>
+              </button>
+          <div id="x" class="collapse navbar-collapse">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link "
+                      id="truyum-navbar-menus" routerLink="/movie-search">Movies List</a></li>
+                      
+                    <li class="nav-item"><a class="nav-link "
+                      id="truyum-navbar-menus" routerLink="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                      id="truyum-navbar-menus" routerLink="/signup">Signup</a></li>
+                  </ul>
+                </div>
+  </nav>
+
+
+
+
+
+<form #loginForm="ngForm">
+        
+  <div class="container border col-6 col-expand-lg mt-5 pb-3 mb-5">
+  <h3>Login</h3>
+  <div class="row">
+    <div class="form-group col-12">
+      <label for="username">Username</label> <div><input name="username" required 
+        type="text" [(ngModel)]="loggeduser.username" #username=ngModel placeholder="Enter username" class = "form-control"/>
+        <div><div *ngIf="username.invalid && (username.touched || username.dirty)">
+          <small *ngIf="username.errors.required" >username is required</small>
+          
+      </div></div>
+    </div></div>
+  </div>
+  <div class="row">
+    <div class="form-group col-12">
+      <label for="pass">Password</label><div> <input name="password" type="password" required
+      [(ngModel)]="loggeduser.password" #password=ngModel placeholder="Enter password" class = "form-control" />
+      <div><div *ngIf="password.invalid && (password.touched || password.dirty)">
+        <small *ngIf="password.errors.required" >password is required</small>
+        
+    </div></div>
+  
+    </div></div>
+  </div>
+  <div class="row col-12">
+    <button type="button" [disabled]="!loginForm.valid" class="btn btn-success ml-3 mt-2" (click)="onlogin()">Login</button>
+    <span class="ml-auto pt-2">New here?<a routerLink="/signup">Signup</a></span>
+  </div>
+  </div>
+  <div class="container " *ngIf="!authenticated"><p class="alert text-center alert-danger">Login Failed!</p></div>
+  
+  </form>

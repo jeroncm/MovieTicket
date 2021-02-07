@@ -1,0 +1,54 @@
+<nav class="navbar bg-dark text-light navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/movie-search"> <i class="fa fa-film"></i><span id="truyum-heading">
+          Movie Cruiser</span></a>
+          <button type="button" class="navbar-toggler" data-toggle="collapse"
+          data-target="#x">
+          <span class="navbar-toggler-icon" ></span>
+        </button>
+      <div id="x" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link "
+            id="truyum-navbar-menus" routerLink="/movie-search">Movie List</a></li>
+            <li class="nav-item" *ngIf="!iscustomer"><a class="nav-link "
+              id="truyum-navbar-menus" routerLink="/favourite-list">Favourites</a></li>
+              <li class="nav-item mt-2" id="truyum-navbar-menus"><i class="fa fa-user ml-4"></i>{{username}}</li>
+            <li class="nav-item"><a class="nav-link "
+            id="truyum-navbar-menus" routerLink="/login" (click) = "logout()">Logout</a></li>
+          </ul>
+          </div>
+  </nav>
+
+
+<div *ngIf = "data.total >= 0">
+    <div class="container ">
+        <h2>Favourites</h2>
+        <div class="list-group">
+          <div class="list-group-item list-group-item-action" *ngFor="let dis of data.movieList">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{dis.title}}</h5>
+              
+            </div>
+            <button class="material-icons float-right" id="trash" (click)="removeFavourites(dis.id)">delete</button>
+      
+      
+          </div>
+          <div class="list-group-item list-group-item-action" >
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1">Total</h2>
+              <h6 class="mt-2">{{data.total}}</h6>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+</div>
+<div *ngIf = "remove" class = "container">
+    <div class = "alert alert-danger  text-center">Movie removed from Favourites successfully</div>
+</div>
+
+
+<div *ngIf = "total == 0.0" class = "container">
+<div class = "alert alert-danger  text-center">No Items in favourites. Click <a routerLink = '/movie-search'>Movie search</a> to add movies</div>
+
+
+</div>

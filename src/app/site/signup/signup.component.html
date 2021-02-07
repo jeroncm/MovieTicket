@@ -1,0 +1,76 @@
+<nav class="navbar bg-dark text-light navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/movie-search"><i class="fa fa-film"></i><span id="truyum-heading">
+                  Movie Cruiser</span></a>
+                  <button type="button" class="navbar-toggler" data-toggle="collapse"
+                  data-target="#x">
+                  <span class="navbar-toggler-icon" ></span>
+              </button>
+          <div id="x" class="collapse navbar-collapse">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link "
+                      id="truyum-navbar-menus" routerLink="/movie-search">Movies List</a></li>
+                      
+                    <li class="nav-item"><a class="nav-link "
+                      id="truyum-navbar-menus" routerLink="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                      id="truyum-navbar-menus" routerLink="/signup">Signup</a></li>
+                  </ul>
+                </div>
+  </nav>
+
+
+
+
+<div class="container  col-6 mt-5 pb-3 mb-5">
+  <h3>Signup</h3>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+      <label for="username">Username</label><div> <input id="user"
+        type="text" [formControl]="username" placeholder="username" class = "form-control"/></div>
+        <div *ngIf="username.invalid && (username.touched || username.dirty)">
+          <small *ngIf="username.errors.required" >Username field is required</small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class=" col-lg-6 col-md-6 col-sm-12 form-group">
+      <label for="firstname">First name</label><div> <input id="firstname"
+        type="text" [formControl]="firstname" placeholder="Enter first name" class = "form-control"/></div>
+        <div *ngIf="firstname.invalid && (firstname.touched || firstname.dirty)">
+          <small *ngIf="firstname.errors.required" >Firstname field is required</small>
+          <small *ngIf="firstname.errors.pattern" >Firstname field shouldnt contain numbers</small>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+      <label for="lastname">Last name</label> <div><input id="lastname"
+        type="text" [formControl]="lastname" placeholder="Enter last name" class = "form-control"/></div>
+        <div *ngIf="lastname.invalid && (lastname.touched || lastname.dirty)">
+          <small *ngIf="lastname.errors.required" >Lastname field is required</small>
+          <small *ngIf="lastname.errors.pattern" >Lastname field shouldnt contain numbers</small>
+  
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+      <label for="pass">Password</label><div> <input id="pass" type="password"
+      [formControl]="password" placeholder="Enter password" class = "form-control" /></div>
+      <div *ngIf="password.invalid && (password.touched || password.dirty)">
+        <small *ngIf="password.errors.required" >Password field is required</small>
+    </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+      <label for="cpass">Confirm password</label><div> <input id="cpass"
+        type="password" [formControl]="confirm_password"
+        placeholder="Enter confirm password" class = "form-control"/></div>
+        <div *ngIf="confirm_password.invalid && (confirm_password.touched || confirm_password.dirty)">
+          <small *ngIf="confirm_password.errors.required" >Confirm Password field is required</small>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button type="submit" [disabled]="!userForm.valid" class="btn btn-danger ml-3 mt-2">Signup</button>
+  </div>
+  </form>
+  </div>
